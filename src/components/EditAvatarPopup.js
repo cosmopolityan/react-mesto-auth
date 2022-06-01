@@ -16,21 +16,21 @@ export default function EditProfilePopup(props) {
   }
 
   return (
-    <PopupWithForm 
-    title={"Обновить аватар"} 
-    name={"edit-avatar"}
-    isOpen={isOpen} 
-    onClose={onClose}
-    onSubmit={handleSubmit}>
+    <PopupWithForm
+      title={"Обновить аватар"}
+      name={"edit-avatar"}
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}>
 
-    <input
-    ref={avatar} 
-    type="url" 
-    className="popup__input" 
-    name="avatar" 
-    id="avatar" 
-    placeholder="Ссылка на картинку" 
-    required />
-  </PopupWithForm>
+      <input
+        ref={avatar}
+        type="url"
+        className="popup__input"
+        name="avatar"
+        id="avatar"
+        placeholder="Ссылка на картинку"
+        required />
+    </PopupWithForm>
   )
 }

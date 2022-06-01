@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { api } from '../utils/api';
 import { useHistory } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
@@ -64,7 +65,7 @@ function App() {
     setDeleteCard(null)
     setIsInfoTooltipOpen(false)
 
-    // setSelectedCard({});
+    setSelectedCard({});
   }
 
   React.useEffect(() => {
@@ -289,30 +290,26 @@ function App() {
           userEmail={userEmail}
         />
         {/* Не рендерит Main */}
-        <Routes>
-          <Route path="/sign-in" element={
-            <Login
-              title='Вход'
-              buttonText='Войти'
-              name='login'
-              onLogIn={handleLogIn}
-            />}>
-          </Route>
-          <Route path="/sign-up" element={
-            <Register
-              title='Регистрация'
-              buttonText='Зарегистрироваться'
-              name='register'
-              onRegister={handleRegistration}
-            />}>
-          </Route>
+          <Routes>
+            <Route path="/sign-in" element={
+              <Login
+                title='Вход'
+                buttonText='Войти'
+                name='login'
+                onLogIn={handleLogIn}
+              />} />
+            <Route path="/sign-up" element={
+              <Register
+                title='Регистрация'
+                buttonText='Зарегистрироваться'
+                name='register'
+                onRegister={handleRegistration}
+              />} />
 
-          <Route element={
-              <ProtectedRoute
-                exact
-                path="/"
-                loggedIn={logedIn}
-                element={Main}
+              {/* TEST */}
+
+              <Route path='/test' element={<Main
+                // loggedIn={logedIn}
                 onEditProfile={handleEditProfileClick}
                 onAddPlace={handleAddPlaceClick}
                 onEditAvatar={handleEditAvatarClick}
@@ -320,24 +317,42 @@ function App() {
                 onCardClick={handleCardClick}
                 onCardLike={handleCardLike}
                 onCardDelete={handleCardDelete}
-              />}>
+              />} />
 
-          {/* <Route element={
-            <Main
-              loggedIn={logedIn}
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onEditAvatar={handleEditAvatarClick}
-              cards={cards}
-              onCardClick={handleCardClick}
-              onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
-            />}>
-          </Route> */}
+              {/* TEST */}
 
-          </Route>
 
-        </Routes>
+            <Route exact path='/' element={<ProtectedRoute />}>
+              <Route exact path='/' element={<Main
+                loggedIn={logedIn}
+                onEditProfile={handleEditProfileClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditAvatarClick}
+                cards={cards}
+                onCardClick={handleCardClick}
+                onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
+              />} />
+            </Route>
+
+            {/* <Route exact path="/" element={
+            <ProtectedRoute
+              path="/"
+              component={
+                <Main
+                  loggedIn={logedIn}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onEditAvatar={handleEditAvatarClick}
+                  cards={cards}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                />
+              }
+            />
+          } /> */}
+          </Routes>
 
         <Footer />
 

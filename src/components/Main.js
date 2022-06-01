@@ -9,18 +9,37 @@ function Main(props) {
   return (
     <main className="content">
       <section className="profile">
-        <div className="profile__avatar-block">
-          <img className="profile__avatar" src={currentUser.avatar} alt={currentUser.name} />
-          <div className="profile__background" onClick={onEditAvatar}></div>
+        <div
+          className="profile__avatar-block"
+          onClick={onEditAvatar}
+        >
+          <img
+            className="profile__avatar"
+            src={currentUser.avatar}
+            alt={currentUser.name}
+          />
+          <div className="profile__background"></div>
         </div>
         <div className="profile__info">
           <div className="profile__container">
             <h1 className="profile__name">{currentUser.name}</h1>
-            <button type="button" className="profile__edit-button" onClick={onEditProfile} aria-label="Редактировать профиль"></button>
+            <button
+              type="button"
+              className="profile__edit-button"
+              onClick={onEditProfile}
+              aria-label="Редактировать профиль"
+            >
+            </button>
           </div>
           <p className="profile__description">{currentUser.about}</p>
         </div>
-        <button type="button" className="profile__add-button" onClick={onAddPlace} aria-label="Добавить новую карточку"></button>
+        <button
+          type="button"
+          className="profile__add-button"
+          onClick={onAddPlace}
+          aria-label="Добавить новую карточку"
+        >
+        </button>
       </section>
 
       {/* Карточки грузятся */}
@@ -29,8 +48,8 @@ function Main(props) {
         <ul className="elements__list">
           {cards.map((item) => (
             <Card
-              key={item._id}
-              card={item}
+              key={item._id} //
+              card={item} //
               onCardClick={onCardClick}
               onCardLike={onCardLike}
               onCardDelete={onCardDelete}
@@ -38,7 +57,6 @@ function Main(props) {
           ))}
         </ul>
       </section>
-
     </main>
   );
 }
