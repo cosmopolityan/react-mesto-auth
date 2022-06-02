@@ -7,7 +7,7 @@ export default function InfoTooltip (props) {
     <div className={`popup ${isOpen && 'popup_opened'}`}
       onClick={onClose}
     >
-    <div className="popup__container"
+    <div className="popup__info"
       onClick={stopProp}
     >
       <button

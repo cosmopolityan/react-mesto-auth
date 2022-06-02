@@ -141,8 +141,10 @@ function App() {
   };
 
   const handleLogIn = (password, email) => {
+    console.log('handleLogInhandleLogInhandleLogIn')
     auth.authorize(password, email)
       .then((data) => {
+        console.log('!!!!', data.token)
         localStorage.setItem('jwt', data.token);
         setLogedIn(true);
         // history.push('/');
@@ -290,53 +292,25 @@ function App() {
           userEmail={userEmail}
         />
         {/* Не рендерит Main */}
-          <Routes>
-            <Route path="/sign-in" element={
-              <Login
-                title='Вход'
-                buttonText='Войти'
-                name='login'
-                onLogIn={handleLogIn}
-              />} />
-            <Route path="/sign-up" element={
-              <Register
-                title='Регистрация'
-                buttonText='Зарегистрироваться'
-                name='register'
-                onRegister={handleRegistration}
-              />} />
+        <Routes>
+          <Route path="/sign-in" element={
+            <Login
+              title='Вход'
+              buttonText='Войти'
+              name='login'
+              onLogIn={handleLogIn}
+            />} />
+          <Route path="/sign-up" element={
+            <Register
+              title='Регистрация'
+              buttonText='Зарегистрироваться'
+              name='register'
+              onRegister={handleRegistration}
+            />} />
 
-              {/* TEST */}
-
-              <Route path='/test' element={<Main
-                // loggedIn={logedIn}
-                onEditProfile={handleEditProfileClick}
-                onAddPlace={handleAddPlaceClick}
-                onEditAvatar={handleEditAvatarClick}
-                cards={cards}
-                onCardClick={handleCardClick}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
-              />} />
-
-              {/* TEST */}
-
-
-            <Route exact path='/' element={<ProtectedRoute />}>
-              <Route exact path='/' element={<Main
-                loggedIn={logedIn}
-                onEditProfile={handleEditProfileClick}
-                onAddPlace={handleAddPlaceClick}
-                onEditAvatar={handleEditAvatarClick}
-                cards={cards}
-                onCardClick={handleCardClick}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
-              />} />
-            </Route>
-
-            {/* <Route exact path="/" element={
+          <Route exact path='/' element={
             <ProtectedRoute
+              loggedIn={logedIn}
               path="/"
               component={
                 <Main
@@ -351,8 +325,8 @@ function App() {
                 />
               }
             />
-          } /> */}
-          </Routes>
+          } />
+        </Routes>
 
         <Footer />
 
@@ -387,6 +361,7 @@ function App() {
         <ImagePopup
           card={selectedCard}
           onClose={closeAllPopups}
+          // onCardClick={handleCardClick}
         />
 
         <InfoTooltip
