@@ -47,7 +47,7 @@ function Register(props) {
           required
         />
         <input
-          alue={password}
+          value={password}
           type="password"
           name="password"
           placeholder="Пароль"
